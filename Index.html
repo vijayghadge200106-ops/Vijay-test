@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vijay Ghadge — E-commerce Growth Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F172A;
+    --navy-mid: #1E293B;
+    --navy-light: #334155;
+    --electric: #3B82F6;
+    --electric-light: #60A5FA;
+    --mint: #10B981;
+    --mint-light: #34D399;
+    --white: #F8FAFC;
+    --muted: #94A3B8;
+    --card-bg: rgba(255,255,255,0.04);
+    --glass: rgba(59,130,246,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    background: rgba(15,23,42,0.75);
+    border-bottom: 1px solid rgba(59,130,246,0.1);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--electric); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--electric); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 5vw 4rem;
+    gap: 2rem;
+    overflow: hidden;
+  }
+
+  /* Background glow blobs */
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+    top: -100px; left: -100px;
+    pointer-events: none;
+    animation: float 8s ease-in-out infinite;
+  }
+  .hero-blob2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%);
+    bottom: 0; right: 10%;
+    pointer-events: none;
+    animation: float 10s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-30px); }
+  }
+
+  .hero-left { position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(16,185,129,0.1);
+    border: 1px solid rgba(16,185,129,0.3);
+    border-radius: 100px;
+    padding: 0.35rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--mint);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--mint);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  .hero-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-name .accent { color: var(--electric); }
+
+  .hero-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    font-weight: 600;
+    color: var(--muted);
+    max-width: 460px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--electric);
+    color: #fff;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    box-shadow: 0 0 30px rgba(59,130,246,0.35);
+    transition: all 0.25s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover {
+    background: var(--electric-light);
+    box-shadow: 0 0 45px rgba(59,130,246,0.55);
+    transform: translateY(-2px);
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--white);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+  .btn-outline:hover {
+    border-color: var(--electric);
+    color: var(--electric);
+    transform: translateY(-2px);
+  }
+
+  /* Hero Right — Abstract Growth Graphic */
+  .hero-right {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .hero-graphic {
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 1;
+    position: relative;
+  }
+
+  .graphic-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(59,130,246,0.2);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 20s linear infinite;
+  }
+  .ring-1 { width: 300px; height: 300px; animation-duration: 20s; }
+  .ring-2 { width: 220px; height: 220px; animation-direction: reverse; animation-duration: 15s; border-color: rgba(16,185,129,0.2); }
+  .ring-3 { width: 380px; height: 380px; animation-duration: 30s; border-style: dashed; }
+
+  @keyframes spin { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .graphic-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(16,185,129,0.2));
+    border: 1px solid rgba(59,130,246,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .orbit-dot {
+    position: absolute;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    top: 50%; left: 50%;
+  }
+  .od1 { background: var(--electric); transform: translate(calc(150px - 6px), -6px); animation: orbit1 4s linear infinite; }
+  .od2 { background: var(--mint); transform: translate(calc(-110px - 6px), -6px); animation: orbit2 6s linear infinite; }
+  .od3 { background: #F59E0B; transform: translate(-6px, calc(-150px - 6px)); animation: orbit3 8s linear infinite; }
+
+  @keyframes orbit1 {
+    from { transform: rotate(0deg) translate(150px) rotate(0deg); }
+    to { transform: rotate(360deg) translate(150px) rotate(-360deg); }
+  }
+  @keyframes orbit2 {
+    from { transform: rotate(120deg) translate(110px) rotate(-120deg); }
+    to { transform: rotate(480deg) translate(110px) rotate(-480deg); }
+  }
+  @keyframes orbit3 {
+    from { transform: rotate(240deg) translate(130px) rotate(-240deg); }
+    to { transform: rotate(600deg) translate(130px) rotate(-600deg); }
+  }
+
+  /* Floating mini cards */
+  .float-card {
+    position: absolute;
+    background: rgba(30,41,59,0.9);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    white-space: nowrap;
+  }
+  .fc1 { top: 10%; right: 0; color: var(--mint); animation: fcFloat 5s ease-in-out infinite; }
+  .fc2 { bottom: 20%; left: 0; color: var(--electric); animation: fcFloat 7s ease-in-out infinite reverse; }
+  .fc3 { top: 40%; right: -5%; color: #F59E0B; animation: fcFloat 6s ease-in-out infinite 1s; }
+
+  @keyframes fcFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 5vw;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--electric);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .section-title span { color: var(--electric); }
+  .section-sub {
+    color: var(--muted);
+    max-width: 520px;
+    font-size: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(59,130,246,0.3), transparent);
+    margin: 0 5vw;
+  }
+
+  /* ── STATS SECTION ── */
+  .stats-section {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 50%, var(--navy) 100%);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(59,130,246,0.15);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--electric), var(--mint));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .stat-card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.35); }
+  .stat-card:hover::before { opacity: 1; }
+
+  .stat-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .stat-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    color: var(--white);
+    line-height: 1;
+  }
+  .stat-number span { color: var(--electric); }
+  .stat-number.mint span { color: var(--mint); }
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .about-visual {
+    position: relative;
+  }
+  .profile-frame {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--electric) 0%, var(--mint) 100%);
+    padding: 3px;
+    margin: 0 auto;
+  }
+  .profile-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    background: var(--navy-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+  }
+  .about-tag {
+    position: absolute;
+    background: var(--navy-mid);
+    border: 1px solid rgba(16,185,129,0.3);
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--mint);
+  }
+  .tag1 { bottom: 5%; right: 5%; }
+  .tag2 { top: 10%; right: -5%; }
+
+  .about-text p {
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .about-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+  .hi-icon { color: var(--mint); font-size: 1rem; }
+
+  /* ── EXPERIENCE ── */
+  .exp-timeline {
+    position: relative;
+    max-width: 800px;
+  }
+  .exp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--electric), var(--mint));
+    opacity: 0.3;
+  }
+  .exp-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid rgba(59,130,246,0.12);
+    border-radius: 16px;
+    padding: 1.75rem 1.75rem 1.75rem 4.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s;
+  }
+  .exp-card:hover {
+    border-color: rgba(59,130,246,0.3);
+    transform: translateX(4px);
+    background: rgba(59,130,246,0.05);
+  }
+  .exp-dot {
+    position: absolute;
+    left: 16px;
+    top: 1.75rem;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--electric);
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .exp-dot::after {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--electric);
+  }
+  .exp-card.current .exp-dot { border-color: var(--mint); }
+  .exp-card.current .exp-dot::after { background: var(--mint); }
+
+  .exp-badge {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: rgba(16,185,129,0.1);
+    color: var(--mint);
+    border: 1px solid rgba(16,185,129,0.3);
+    margin-bottom: 0.75rem;
+  }
+  .exp-card:not(.current) .exp-badge {
+    background: rgba(59,130,246,0.1);
+    color: var(--electric);
+    border-color: rgba(59,130,246,0.3);
+  }
+  .exp-role {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+  }
+  .exp-company {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .exp-achievements { list-style: none; }
+  .exp-achievements li {
+    position: relative;
+    padding-left: 1.25rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+  }
+  .exp-achievements li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--electric);
+    font-weight: 700;
+  }
+
+  /* ── SKILLS ── */
+  .skills-section { background: linear-gradient(180deg, var(--navy) 0%, rgba(30,41,59,0.5) 100%); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-card {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(59,130,246,0.05) 0%, rgba(16,185,129,0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .skill-card:hover {
+    border-color: rgba(59,130,246,0.25);
+    transform: translateY(-3px);
+  }
+  .skill-card:hover::before { opacity: 1; }
+
+  .skill-icon-wrap {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: rgba(59,130,246,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .skill-card.mint .skill-icon-wrap { background: rgba(16,185,129,0.12); }
+  .skill-card.amber .skill-icon-wrap { background: rgba(245,158,11,0.12); }
+
+  .skill-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .skill-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .skill-bar-wrap {
+    margin-top: 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 100px;
+    height: 3px;
+    overflow: hidden;
+  }
+  .skill-bar {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(to right, var(--electric), var(--mint));
+    transition: width 1s ease;
+  }
+
+  /* ── BRANDS MARQUEE ── */
+  .marquee-section { padding: 4rem 0; overflow: hidden; }
+  .marquee-title {
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: marquee 25s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  .marquee-set {
+    display: flex;
+    gap: 0;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .brand-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.8rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 100px;
+    margin: 0 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--muted);
+    white-space: nowrap;
+    transition: all 0.3s;
+  }
+  .brand-chip:hover {
+    background: rgba(59,130,246,0.08);
+    border-color: rgba(59,130,246,0.25);
+    color: var(--white);
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(59,130,246,0.1);
+    border-bottom: 1px solid rgba(59,130,246,0.1);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-info h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .contact-info p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem; }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .cd-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    background: rgba(59,130,246,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .cd-text { font-size: 0.88rem; color: var(--muted); }
+  .cd-text strong { display: block; color: var(--white); font-size: 0.9rem; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.78rem; font-weight: 600; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.2s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--electric);
+    background: rgba(59,130,246,0.05);
+  }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-group select option { background: var(--navy-mid); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  footer p { font-size: 0.82rem; color: var(--muted); }
+  .footer-socials { display: flex; gap: 1rem; }
+  .social-btn {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .social-btn:hover {
+    background: rgba(59,130,246,0.12);
+    border-color: rgba(59,130,246,0.3);
+    transform: translateY(-2px);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 7rem; }
+    .hero-right { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">VG<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#stats">Results</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-primary" style="padding:0.6rem 1.3rem; font-size:0.82rem;">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-blob2"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Open to New Opportunities
+    </div>
+    <h1 class="hero-name">Vijay<br><span class="accent">Ghadge</span></h1>
+    <p class="hero-tagline">Scaling Brands through Data-Driven Digital Sales &amp; Strategic Growth.</p>
+    <div class="hero-cta-group">
+      <a href="#stats" class="btn-primary">📊 View My Results</a>
+      <a href="#contact" class="btn-outline">Let's Talk →</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-graphic">
+      <div class="graphic-ring ring-1"></div>
+      <div class="graphic-ring ring-2"></div>
+      <div class="graphic-ring ring-3"></div>
+      <div class="graphic-center">🚀</div>
+      <div class="orbit-dot od1"></div>
+      <div class="orbit-dot od2"></div>
+      <div class="orbit-dot od3"></div>
+      <div class="float-card fc1">📈 200% YOY Growth</div>
+      <div class="float-card fc2">🛒 10K+ Orders/Month</div>
+      <div class="float-card fc3">⚡ 5+ Years Exp.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STATS -->
+<section class="stats-section" id="stats">
+  <div class="reveal">
+    <div class="section-label">The Numbers</div>
+    <h2 class="section-title">Results That <span>Speak</span></h2>
+    <p class="section-sub">Five years of measurable impact across marketplace ecosystems and performance channels.</p>
+  </div>
+  <div class="stats-grid reveal">
+    <div class="stat-card">
+      <div class="stat-icon">💰</div>
+      <div class="stat-number"><span id="cnt1">0</span><span style="color:var(--mint)">L+</span></div>
+      <div class="stat-label">Monthly Sales Managed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">📦</div>
+      <div class="stat-number mint"><span id="cnt2">0</span><span>K+</span></div>
+      <div class="stat-label">Monthly Orders Scaled</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🎯</div>
+      <div class="stat-number"><span id="cnt3">0</span><span>%</span></div>
+      <div class="stat-label">YOY Marketplace Growth</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">📱</div>
+      <div class="stat-number mint"><span id="cnt4">0</span><span>+</span></div>
+      <div class="stat-label">SKUs Managed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">⚡</div>
+      <div class="stat-number"><span id="cnt5">0</span><span>x</span></div>
+      <div class="stat-label">Avg ROAS Achieved</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🏆</div>
+      <div class="stat-number mint"><span id="cnt6">0</span><span>+</span></div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="profile-frame">
+        <div class="profile-inner">👤</div>
+      </div>
+      <div class="about-tag tag1">🏅 Amazon Expert</div>
+      <div class="about-tag tag2">📊 Data-Driven</div>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-label">Professional Summary</div>
+      <h2 class="section-title">5 Years of <span>E-commerce</span> Mastery</h2>
+      <p>Dynamic E-commerce Sales Expert with 5 years of experience in Amazon/Flipkart marketplace management, D2C brand scaling, and performance marketing.</p>
+      <p>Proven track record of increasing ROAS, launching high-converting product listings, and managing 5-figure monthly sales budgets across competitive categories.</p>
+      <div class="about-highlights">
+        <div class="highlight-item"><span class="hi-icon">✓</span> Amazon Marketplace</div>
+        <div class="highlight-item"><span class="hi-icon">✓</span> Flipkart Seller Central</div>
+        <div class="highlight-item"><span class="hi-icon">✓</span> D2C Brand Scaling</div>
+        <div class="highlight-item"><span class="hi-icon">✓</span> PPC Campaigns</div>
+        <div class="highlight-item"><span class="hi-icon">✓</span> Performance Marketing</div>
+        <div class="highlight-item"><span class="hi-icon">✓</span> Data Analytics</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="reveal">
+    <div class="section-label">Career Journey</div>
+    <h2 class="section-title">Work <span>Experience</span></h2>
+    <p class="section-sub">A track record of scaling brands from zero to significant monthly revenue.</p>
+  </div>
+  <div class="exp-timeline reveal">
+    <div class="exp-card current">
+      <div class="exp-dot"></div>
+      <div class="exp-badge">● Current Role</div>
+      <div class="exp-role">Senior E-commerce Manager</div>
+      <div class="exp-company">Self Business • 2022 – Present</div>
+      <ul class="exp-achievements">
+        <li>Managed a portfolio of 50+ SKUs across Amazon & Flipkart marketplaces.</li>
+        <li>Achieved 200% YOY growth in marketplace sales through strategic optimization.</li>
+        <li>Implemented data-driven pricing, inventory forecasting &amp; listing SEO strategies.</li>
+        <li>Ran high-ROI PPC campaigns driving consistent ROAS improvements every quarter.</li>
+      </ul>
+    </div>
+    <div class="exp-card">
+      <div class="exp-dot"></div>
+      <div class="exp-badge">Previous Role</div>
+      <div class="exp-role">Digital Sales Specialist</div>
+      <div class="exp-company">E-commerce Operations • 2019 – 2022</div>
+      <ul class="exp-achievements">
+        <li>Scaled operations from 0 to 10,000+ orders per month — a full ground-up build.</li>
+        <li>Managed end-to-end product lifecycle: listing, launch, ads, and fulfillment.</li>
+        <li>Optimized conversion funnels through A/B testing on product pages & ad creatives.</li>
+        <li>Drove customer acquisition via Meta &amp; Google Ads with measurable CPA targets.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="reveal">
+    <div class="section-label">Core Competencies</div>
+    <h2 class="section-title">Skills &amp; <span>Expertise</span></h2>
+    <p class="section-sub">A full-stack of e-commerce capabilities — from traffic acquisition to conversion and retention.</p>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-card">
+      <div class="skill-icon-wrap">🛒</div>
+      <div class="skill-name">Marketplace Management</div>
+      <div class="skill-desc">Amazon, Flipkart &amp; Shopify — listings, SEO, catalogue &amp; seller metrics.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div>
+    </div>
+    <div class="skill-card mint">
+      <div class="skill-icon-wrap">📣</div>
+      <div class="skill-name">PPC &amp; Performance Marketing</div>
+      <div class="skill-desc">Meta Ads &amp; Google Ads — campaign strategy, bid optimisation &amp; scaling.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div>
+    </div>
+    <div class="skill-card amber">
+      <div class="skill-icon-wrap">📦</div>
+      <div class="skill-name">Inventory Management</div>
+      <div class="skill-desc">Demand forecasting, replenishment planning &amp; overstock mitigation.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon-wrap">🎯</div>
+      <div class="skill-name">Conversion Rate Optimization</div>
+      <div class="skill-desc">Funnel analysis, landing page CRO &amp; checkout flow improvements.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+    </div>
+    <div class="skill-card mint">
+      <div class="skill-icon-wrap">🔬</div>
+      <div class="skill-name">A/B Testing &amp; Analytics</div>
+      <div class="skill-desc">Google Analytics, split tests, cohort analysis &amp; data-driven decisions.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:87%"></div></div>
+    </div>
+    <div class="skill-card amber">
+      <div class="skill-icon-wrap">🚀</div>
+      <div class="skill-name">Product Launch Strategy</div>
+      <div class="skill-desc">Go-to-market planning, ranking strategies &amp; review velocity growth.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS MARQUEE -->
+<section class="marquee-section" id="brands">
+  <div class="marquee-title">Platforms &amp; Marketplaces Worked With</div>
+  <div style="overflow:hidden">
+    <div class="marquee-track">
+      <div class="marquee-set">
+        <span class="brand-chip">🟠 Amazon</span>
+        <span class="brand-chip">💙 Flipkart</span>
+        <span class="brand-chip">🟢 Shopify</span>
+        <span class="brand-chip">🔵 Meta Ads</span>
+        <span class="brand-chip">🔴 Google Ads</span>
+        <span class="brand-chip">📊 Google Analytics</span>
+        <span class="brand-chip">🛍️ Meesho</span>
+        <span class="brand-chip">⚡ Myntra</span>
+        <span class="brand-chip">🏪 Nykaa</span>
+        <span class="brand-chip">📦 WooCommerce</span>
+      </div>
+      <div class="marquee-set">
+        <span class="brand-chip">🟠 Amazon</span>
+        <span class="brand-chip">💙 Flipkart</span>
+        <span class="brand-chip">🟢 Shopify</span>
+        <span class="brand-chip">🔵 Meta Ads</span>
+        <span class="brand-chip">🔴 Google Ads</span>
+        <span class="brand-chip">📊 Google Analytics</span>
+        <span class="brand-chip">🛍️ Meesho</span>
+        <span class="brand-chip">⚡ Myntra</span>
+        <span class="brand-chip">🏪 Nykaa</span>
+        <span class="brand-chip">📦 WooCommerce</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="section-label">Get in Touch</div>
+      <h2>Let's Scale <span style="color:var(--electric)">Together</span></h2>
+      <p>Have a brand that needs to dominate on Amazon or Flipkart? Let's talk strategy. I'm available for full-time roles, consulting, and brand partnerships.</p>
+      <div class="contact-detail">
+        <div class="cd-icon">📞</div>
+        <div class="cd-text"><strong>+91 7770027652</strong>Call or WhatsApp</div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">📧</div>
+        <div class="cd-text"><strong>vijayghadge200106@gmail.com</strong>Email anytime</div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">📍</div>
+        <div class="cd-text"><strong>India</strong>Open to Remote &amp; Hybrid</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Rahul Sharma">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="hello@yourbrand.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>What are you looking for?</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Amazon Marketplace Management</option>
+            <option>Flipkart Growth Strategy</option>
+            <option>PPC / Performance Marketing</option>
+            <option>D2C Brand Scaling</option>
+            <option>Full-Time Hire</option>
+            <option>Other / Consulting</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Budget Range (Monthly)</label>
+          <select>
+            <option value="">Select range...</option>
+            <option>Under ₹50,000</option>
+            <option>₹50,000 – ₹2,00,000</option>
+            <option>₹2,00,000 – ₹5,00,000</option>
+            <option>₹5,00,000+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell me about your brand</label>
+          <textarea placeholder="What products do you sell? What are your current challenges? Where do you want to grow?"></textarea>
+        </div>
+        <button class="btn-primary" onclick="handleSubmit(this)" style="width:100%; justify-content:center; font-size:1rem; padding:1rem;">
+          🚀 Send Message &amp; Let's Scale
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Vijay Ghadge · E-commerce Growth Specialist</p>
+  <div class="footer-socials">
+    <a class="social-btn" href="mailto:vijayghadge200106@gmail.com" title="Email">📧</a>
+    <a class="social-btn" href="tel:7770027652" title="Call">📞</a>
+    <a class="social-btn" href="https://linkedin.com" target="_blank" title="LinkedIn">💼</a>
+  </div>
+</footer>
+
+<script>
+  // ── COUNTER ANIMATION ──
+  const counters = [
+    { id: 'cnt1', target: 10, duration: 2000 },
+    { id: 'cnt2', target: 10, duration: 2000 },
+    { id: 'cnt3', target: 200, duration: 2200 },
+    { id: 'cnt4', target: 50, duration: 1800 },
+    { id: 'cnt5', target: 4, duration: 1500 },
+    { id: 'cnt6', target: 5, duration: 1200 },
+  ];
+
+  let countersStarted = false;
+
+  function animateCounter(id, target, duration) {
+    const el = document.getElementById(id);
+    const start = performance.now();
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
+    const tick = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      el.textContent = Math.floor(easeOut(p) * target);
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    };
+    requestAnimationFrame(tick);
+  }
+
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        if (!countersStarted && entry.target.closest('#stats')) {
+          countersStarted = true;
+          counters.forEach(c => animateCounter(c.id, c.target, c.duration));
+        }
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // ── FORM SUBMIT ──
+  function handleSubmit(btn) {
+    btn.textContent = '✅ Message Sent! I\'ll respond within 24 hours.';
+    btn.style.background = 'var(--mint)';
+    btn.style.boxShadow = '0 0 30px rgba(16,185,129,0.4)';
+    btn.disabled = true;
+  }
+
+  // ── PARALLAX HERO ──
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    document.querySelector('.hero-left').style.transform = `translateY(${y * 0.08}px)`;
+    document.querySelector('.hero-right')?.style && (document.querySelector('.hero-right').style.transform = `translateY(${y * 0.05}px)`);
+  });
+
+  // ── NAV SCROLL STYLE ──
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.padding = '0.7rem 5vw';
+    } else {
+      nav.style.padding = '1rem 5vw';
+    }
+  });
+</script>
+</body>
+</html>
